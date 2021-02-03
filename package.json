@@ -4,7 +4,7 @@
   "description": "A monorepo to test monorepo utilities 🧱",
   "main": "README.md",
   "scripts": {
-    "test": "test"
+    "test": "jest "
   },
   "repository": {
     "type": "git",
@@ -22,7 +22,24 @@
     "url": "https://github.com/monorepo-utilities/utilities-tester/issues"
   },
   "homepage": "https://github.com/monorepo-utilities/utilities-tester#readme",
-  "dependencies": {
+  "config": {
+		"commitizen": {
+			"path": "node_modules/@commitlint/prompt"
+		}
+	},
+	"husky": {
+		"hooks": {
+			"commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+			"pre-commit": "echo '📝 pre-commit 📝\nrunning some tests...' && lint-staged",
+			"post-merge": "echo '📝 post-merge 📝\nrefreshing your dev env...' && yarn start"
+		}
+	},
+	"lint-staged": {
+		"*.{json,ts,tsx,md}": "eslint --fix",
+		"*.{ts,tsx,md}": "prettier --write",
+		"*.{ts,tsx}": "jest --bail --findRelatedTests"
+	},
+  "devDependencies": {
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-lerna-scopes": "^11.0.0",
     "@commitlint/prompt": "^11.0.0",

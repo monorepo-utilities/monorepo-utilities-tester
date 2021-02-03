@@ -1,6 +1,10 @@
 {
-  "packages": [
-    "packages/*"
-  ],
-  "version": "0.0.0"
+	"packages": ["packages/*", "apps/*", "services/*"],
+	"version": "independent",
+	"npmClient": "yarn",
+	"useWorkspaces": true,
+	"publishConfig": {
+		"directory": "dist"
+	}
 }
+
