@@ -3,8 +3,15 @@
   "version": "0.0.1",
   "description": "A monorepo to test monorepo utilities 🧱",
   "main": "README.md",
+  "workspaces": {
+		"packages": [
+			"apps/*",
+			"packages/*",
+			"services/*"
+		]
+	},
   "scripts": {
-    "test": "jest "
+    "test": "lerna exec yarn test"
   },
   "repository": {
     "type": "git",
