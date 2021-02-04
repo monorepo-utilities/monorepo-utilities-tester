@@ -14,9 +14,9 @@
  "scripts": {
   "lint": "eslint . --fix",
   "prettier": "prettier --write",
-  "start": "concurrently 'lerna exec --scope @monorepo-utilities-tester/app-foo' 'lerna exec --scope @monorepo-utilities-tester/app-bar'",
+  "start": "concurrently 'lerna exec --scope @monorepo-utilities-tester/app-foo yarn start' 'lerna exec --scope @monorepo-utilities-tester/app-bar yarn start' 'lerna exec --scope @monorepo-utilities-tester/service-foo yarn start' 'lerna exec --scope @monorepo-utilities-tester/service-bar yarn start'",
   "build": "lerna run build",
-  "test": "jest",
+  "test": "lerna run test",
   "test:husky": "lint-staged && yarn test && tsc"
  },
  "repository": {
