@@ -33,7 +33,12 @@ nvm i && yarn
 
 ```sh
 yarn start
-# => concurrently runs all apps
+# concurrently runs all apps
+# ---
+# => app-bar => http:0.0.0.0:3001
+# => app-foo => http:0.0.0.0:3000
+# => service-bar => http:0.0.0.0:3002
+# => service-foo => http:0.0.0.0:3003
 ```
 
 #### Run tests
@@ -47,6 +52,7 @@ yarn test
 
 ```sh
 yarn build
+# => builds src to dist
 ```
 
 ---
@@ -54,3 +60,9 @@ yarn build
 ## Tech and Cites
 
 This project was constructed using [Lerna](https://lerna.js.org/) for monorepo capabilities, [Create React App's TypeScript template](https://create-react-app.dev/), and [Express TypeScript Starter](https://github.com/seanpmaxwell/express-generator-typescript). 
+
+## Help
+
+This repository is built using 2 different starters. The rapid progress  that using starters provided leaves tests and linting out of alignment. 
+
+Help with those updates would be grately appreciated! 🙏
