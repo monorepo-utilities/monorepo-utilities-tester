@@ -1,77 +1,16 @@
 {
- "name": "@monorepo-utilities-tester/root",
- "private": true,
- "version": "0.0.1",
- "description": "A *test* monorepo for monorepo-utilities—not standard! 🧱",
- "main": "README.md",
- "workspaces": {
-  "packages": [
-   "apps/*",
-   "packages/*",
-   "services/*"
-  ]
- },
- "scripts": {
-  "lint": "eslint . --fix",
-  "prettier": "prettier --write",
-  "start": "concurrently 'lerna exec --scope @monorepo-utilities-tester/app-foo yarn start' 'lerna exec --scope @monorepo-utilities-tester/app-bar yarn start' 'lerna exec --scope @monorepo-utilities-tester/service-foo yarn start' 'lerna exec --scope @monorepo-utilities-tester/service-bar yarn start'",
-  "build": "lerna run build",
-  "test": "lerna run test",
-  "test:husky": "lint-staged && yarn test && tsc"
- },
- "repository": {
-  "type": "git",
-  "url": "git+https://github.com/monorepo-utilities/utilities-tester.git"
- },
- "keywords": [
-  "monorepo",
-  "tests",
-  "monorepo-utilities",
-  "utils"
- ],
- "author": "Jeffry Wainwright <jeffry.in> (yowainwright@gmail.com)",
- "license": "MIT",
- "bugs": {
-  "url": "https://github.com/monorepo-utilities/utilities-tester/issues"
- },
- "homepage": "https://github.com/monorepo-utilities/utilities-tester#readme",
- "config": {
-  "commitizen": {
-   "path": "node_modules/@commitlint/prompt"
+  "name": "turborepo-basic-pnpm",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev --parallel",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+  },
+  "devDependencies": {
+    "eslint-config-custom": "workspace:*",
+    "prettier": "latest",
+    "turbo": "latest"
   }
- },
- "husky": {
-  "hooks": {
-   "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-   "pre-commit": "echo '📝 pre-commit 📝\nrunning some tests...' && lint-staged && yarn test && tsc",
-   "post-merge": "echo '📝 post-merge 📝\nrefreshing your dev env...' && yarn"
-  }
- },
- "lint-staged": {
-  "*.{json,ts,tsx,md}": "eslint --fix",
-  "*.{ts,tsx,md}": "prettier --write"
- },
- "devDependencies": {
-  "@commitlint/cli": "^11.0.0",
-  "@commitlint/config-lerna-scopes": "^11.0.0",
-  "@commitlint/prompt": "^11.0.0",
-  "@heartly/eslint-config-typescript": "^0.0.2",
-  "@heartly/prettier-config": "^0.0.1",
-  "@types/jest": "^26.0.20",
-  "@types/node": "^14.14.22",
-  "commitizen": "^4.2.3",
-  "concurrently": "^5.3.0",
-  "eslint": "^7.19.0",
-  "husky": "^4.3.8",
-  "jest": "^26.6.3",
-  "jest-circus": "^26.6.3",
-  "lerna": "^3.22.1",
-  "lint-staged": "^10.5.3",
-  "prettier": "^2.2.1",
-  "ts-jest": "^26.5.0",
-  "ts-lib": "^0.0.5",
-  "ts-node": "^9.1.1",
-  "tsconfig-paths": "^3.9.0",
-  "typescript": "^4.1.3"
- }
 }
